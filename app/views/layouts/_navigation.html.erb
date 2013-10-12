@@ -1,19 +1,24 @@
-<%= link_to "Bandstand", root_path, :class => 'brand' %>
-<ul class="nav">
-  <% if user_signed_in? %>
-    <li>
-    <%= link_to 'Logout', signout_path %>
-    </li>
-  <% else %>
-    <li>
-    <%= link_to 'Login', signin_path %>
-    </li>
-  <% end %>
-  <% if user_signed_in? %>
-    <% if current_user.has_role? :admin %>
-      <li>
-      <%= link_to 'Admin', users_path %>
-      </li>
-    <% end %>
-  <% end %>
-</ul>
+<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Bandstand</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><%= link_to 'Home', root_path %></li>
+            <li><%= link_to 'Admin', admin_path %></li>
+            <li><a href="#contact">Contact</a></li>
+            <% if user_signed_in? %>
+            <li><%= link_to 'Sign Out', signout_path %></li>
+            <% else %>
+            <li><%= link_to 'Sign In With Facebook', signin_path %></li>
+            <% end %>
+          </ul>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
