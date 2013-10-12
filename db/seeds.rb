@@ -5,12 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-puts 'ROLES'
-YAML.load(ENV['ROLES']).each do |role|
-  Role.find_or_create_by_name(role)
-  puts 'role: ' << role
-end
+
 
 puts 'CREATING BAND PROFILE'
 band = BandProfile.create! :name => 'My Band', :info => 'Some info here'
 puts 'New band created: ' << band.name
+
+puts 'Creating Album'
+album = Album.create! :title => 'First Album'
+puts 'New Album created: ' << album.title
