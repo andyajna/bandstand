@@ -1,0 +1,7 @@
+<div class="profile">
+<h3>Photos</h3>
+	<% if @photos %>
+		<%= link_to "Photo library", photos_path, class: 'btn btn-primary' %>
+	<% end %>
+<%= link_to "Add a photo", new_photo_path, class: 'btn btn-warning' %>
+</div>

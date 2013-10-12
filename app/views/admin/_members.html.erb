@@ -1,0 +1,14 @@
+<div class="profile">
+<h3>Band members</h3>
+	<% if @members.count > 0 %>
+		<% @members.each do |member| %>
+			<div class="container">
+			<%= image_tag member.image, class: "admin-image" %>
+			<p><strong><%= member.name %></strong></p>
+			<p><%= member.info %></p>
+			<p><%= link_to "Edit member", edit_member_path(member), class: 'btn btn-warning' %></p>	
+			</div>
+		<% end %>
+	<% end %>
+<p><%= link_to "Add band members", new_member_path, class: 'btn btn-warning' %></p>
+</div>

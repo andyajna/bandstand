@@ -1,0 +1,33 @@
+<div class="profile">
+<h3>Albums</h3>
+	<% if @albums.count > 0 %>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Tracks</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @albums.each do |album| %>
+					<tr>
+						<td><%= album.title %></td>
+						<td>
+							<% if album.tracks.count > 0 %>
+								<% album.tracks.each do |track| %>
+									<p><%= track.title %> [<%= link_to "Edit", edit_track_path(track) %>]</p>
+								<% end %>
+							<% end %>
+							<%= link_to "Add a track", new_track_path, class: 'btn btn-warning' %>
+						</td>
+						<td><%= link_to "Edit", edit_album_path(album), class: 'btn btn-warning' %></td>
+				        <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				    </tr>
+				<% end %>
+			</tbody>
+		</table>
+	<% end %>
+<p><%= link_to "Add an album", new_album_path, class: 'btn btn-warning' %></p>
+</div>

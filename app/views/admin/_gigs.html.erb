@@ -1,0 +1,36 @@
+<div class="profile">
+<h3>Gigs</h3>
+	<% if @gigs.count > 0 %>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Gig name</th>
+					<th>Date</th>
+					<th>Location</th>
+					<th>Status</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @gigs.each do |gig| %>
+					<tr>
+						<td><%= link_to gig.title, gig %></td>
+						<td><%= gig.date.strftime("%A, %e %B %Y") %></td>
+						<td><%= gig.location %></td>
+						<td>
+							<% if gig.date < Date.today %> 
+								Archived 
+							<% else %> 
+								Upcoming
+							<% end %>
+						</td>
+						<td><%= link_to "Edit", edit_gig_path(gig), class: 'btn btn-warning' %></td>
+						<td><%= link_to 'Destroy', gig, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	<% end %>
+<p><%= link_to "Add a gig", new_gig_path, class: 'btn btn-warning' %></p>
+</div>

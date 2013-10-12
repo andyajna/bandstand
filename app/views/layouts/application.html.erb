@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Bandstand" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Bandstand" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "The Love You Rights" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "The Love You Rights" %>">
     <link href='http://fonts.googleapis.com/css?family=Black+Ops+One' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Bangers' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag "application", :media => "all" %>
@@ -11,33 +11,31 @@
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
   </head>
-  <body class="<%= controller_name %> <%= action_name %>">
-    <% if user_signed_in? %>
+  <body>
     <div class="container">
-    
-        
-          <%= render 'layouts/navigation' %>
-        
-    </div>
-    <% end %>
-    <div id="main" role="main">
+    <% if user_signed_in? %>
       <div class="container">
-        <div class="content">
-          <div class="container">
-           <div class="row">
-            <div class="col-lg-12">
-              <%= render 'layouts/messages' %>
-              <%= yield %>
-            </div>
-          </div>
+          <%= render 'layouts/navigation' %>
+      </div>
+    <% end %>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <%= render 'layouts/messages' %>
+          <%= yield %>
         </div>
-          <footer>
-            <div class="container">
-            <%= render 'layouts/footer' %>
-          </div>
-          </footer>
-        </div>
-      </div> <!--! end of .container -->
-    </div> <!--! end of #main -->
+      </div>
+    </div>
+    <footer>
+      <div class="container">
+        <%= render 'layouts/footer' %>
+      </div>
+    </footer>
+   </div>
+       <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="jquery.js"></script>
+    <script src="bootstrap.min.js"></script>
   </body>
 </html>

@@ -1,0 +1,9 @@
+<div class="profile">
+<h3><%= @band_profile.name %>'s Links</h3>
+<% if @links.count > 0 %>
+	<% @links.each do |link| %>
+		<p><%= link_to link.title, link.url, html_options = { :target => '_blank' } %></p>
+	<% end %>
+<% end %>
+<p><%= link_to "Add links", new_link_path, class: 'btn btn-warning' %></p>
+</div>

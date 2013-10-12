@@ -1,92 +1,66 @@
+<div class="container">
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>The Love You Rights</title>
+<div class="head">
+  <h1>The Love You Rights</h1>
+</div>
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="../../assets/js/html5shiv.js"></script>
-      <script src="../../assets/js/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-
-    
-
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="head">
-    	<h1>The Love You Rights</h1>
+<div class="front-page">
+  <div class="row">
+    <div class="col-lg-4">
+      <h2>Us</h2>
+      <% @members.each do |member| %>
+        <div class="front-box">
+        <p><strong><%= member.name %></strong></p>
+        <p><%= member.info %></p>
+        <%= image_tag member.image, class: "front-image" %>
+        </div>
+        <p>&nbsp;</p>
+      <% end %>
     </div>
 
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="front-page">
-      <div class="row">
-        <div class="col-lg-4">
-          <h2>Us</h2>
-          <% @members.each do |member| %>
-          <div class="front-box">
-          <p><strong><%= member.name %></strong></p>
-          <p><%= member.info %></p>
-          <%= image_tag member.image, class: "front-image" %>
-         </div>
-         <p>&nbsp;</p>
-          <% end %>
-      	  
+    <div class="col-lg-4">
+      <h2>Next Gigs</h2>
+      <% @gig.each do |gig| %>
+        <div class="front-box">
+        <p><strong><%= gig.title %></strong></p>
+        <p><%= gig.date.strftime("%A, %e %B %Y") %></p>
+        <p><%= gig.start_time %></p>
+        <p><%= gig.finish_time %></p>
+        <p><%= gig.street_address %></p>
+        <p><%= gig.suburb %></p>
+        <p><%= link_to 'Location Map', gig.location, html_options = { :target => '_blank' }  %></p>
+        <p><%= link_to 'Buy Tickets', gig.tickets_url, html_options = { :target => '_blank' } %></p>
         </div>
-        <div class="col-lg-4">
-          <h2>Next Gigs</h2>
-          <% @gig.each do |gig| %>
-          <div class="front-box">
-          <p><strong><%= gig.title %></strong></p>
-          <p><%= gig.date %></p>
-          <p><%= gig.start_time %></p>
-          <p><%= gig.finish_time %></p>
-          <p><%= gig.street_address %></p>
-          <p><%= gig.suburb %></p>
-          <p><%= link_to 'Location Map', gig.location, html_options = { :target => '_blank' }  %></p>
-          <p><%= link_to 'Buy Tickets', gig.tickets_url, html_options = { :target => '_blank' } %></p>
-         </div>
-         <p>&nbsp;</p>
-          <% end %>
-          <h2>Our Links</h2>
-          <div class="front-box">
-          <% @links.each do |link| %>
+        <p>&nbsp;</p>
+      <% end %>
           
+      <h2>Our Links</h2>
+      <div class="front-box">
+        <% @links.each do |link| %>
           <p><%= link_to link.title, link.url, html_options = { :target => '_blank' } %></p>
-<% end %>
-         </div>
-          
-       </div>
-        <div class="col-lg-4">
-          <h2>Latest Album</h2>
-          <div class="front-box">
-          <p><strong><%= @album.title %></strong></p>
-          <p><%= @album.release_date %></p>
-          <p><%= @album.info %></p>
-          <p><%= link_to 'Sound Cloud page..', @album.buy_link, html_options = { :target => '_blank' } %></p>
-         </div>
-        <h2>Latest Pics</h2>
-        <% @photo.each do |photo| %>
-          <div class="front-box">
+        <% end %>
+      </div>  
+    </div>
+
+    <div class="col-lg-4">
+      <h2>Latest Album</h2>
+      <div class="front-box">
+        <p><strong><%= @album.title %></strong></p>
+        <p><%= @album.release_date %></p>
+        <p><%= @album.info %></p>
+        <p><%= link_to 'Sound Cloud page..', @album.buy_link, html_options = { :target => '_blank' } %></p>
+      </div>
+
+      <h2>Latest Pics</h2>
+      <% @photo.each do |photo| %>
+        <div class="front-box">
           <p><%= photo.caption %></p>
           <p><%= image_tag photo.image, class: "front-image" %></p>
-          
-         </div>
-         <p>&nbsp;</p>
-         <% end %>
         </div>
-      </div>
+        <p>&nbsp;</p>
+      <% end %>
+    </div>
   </div>
-    </div> <!-- /container -->
+</div>
+</div> <!-- /container -->
 
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="jquery.js"></script>
-    <script src="bootstrap.min.js"></script>
-  </body>
-</html>

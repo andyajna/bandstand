@@ -99,6 +99,10 @@ div {
   color: #fff;
 }
 
+.front-page {
+  background-color: #000000;
+}
+
 .front-page h2 {
 	font-family: 'Bangers', cursive;
   color: orange;
@@ -118,6 +122,7 @@ div {
 	border-color: orange;
 	padding:10px 10px 10px 10px;
 	box-shadow: 10px 10px 5px #888888;
+  background-color: transparent;
 }
 
 .admin-image {
