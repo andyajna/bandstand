@@ -10,3 +10,7 @@ YAML.load(ENV['ROLES']).each do |role|
   Role.find_or_create_by_name(role)
   puts 'role: ' << role
 end
+
+puts 'CREATING BAND PROFILE'
+band = BandProfile.create! :name => 'My Band', :info => 'Some info here'
+puts 'New band created: ' << band.name

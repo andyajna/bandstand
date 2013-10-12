@@ -17,9 +17,9 @@
 	<hr>
 	<div class="profile">
 	<h3><%= @band_profile.name %>'s Links</h3>
-	<% if @band_profile.links.count > 0 %>
+	<% if @links.count > 0 %>
 		
-		<% @band_profile.links.each do |link| %>
+		<% @links.each do |link| %>
 			<p><%= link_to link.title, link.url, html_options = { :target => '_blank' } %></p>
 		<% end %>
 	<% end %>
@@ -36,12 +36,7 @@
 				<p><strong><%= member.name %></strong></p>
 				<p><%= member.info %></p>
 				<p><%= link_to "Edit member", edit_member_path(member), class: 'btn btn-warning' %></p>
-				<% if member.links.count > 0 %>
-					<% member.links.each do |link| %>
-						<p><%= link_to link.title, link.url %></p>
-					<% end %>
-				<% end %>
-				<p><%= link_to "Add links", new_link_path, class: 'btn btn-warning' %></p>
+				
 			</div>
 		<% end %>
 	<% end %>
@@ -52,8 +47,6 @@
 	<div class="profile">
 	<h3>Gigs</h3>
 	<% if @gigs.count > 0 %>
-
-
 		<table class="table table-hover">
 			<thead>
 				<tr>

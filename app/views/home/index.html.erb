@@ -2,15 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    
-
     <title>The Love You Rights</title>
-
-    <!-- Bootstrap core CSS -->
-   
-
-    <!-- Custom styles for this template -->
-    
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -60,11 +52,13 @@
          <p>&nbsp;</p>
           <% end %>
           <h2>Our Links</h2>
-          <% @links.each do |link| %>
           <div class="front-box">
+          <% @links.each do |link| %>
+          
           <p><%= link_to link.title, link.url, html_options = { :target => '_blank' } %></p>
+<% end %>
          </div>
-          <% end %>
+          
        </div>
         <div class="col-lg-4">
           <h2>Latest Album</h2>

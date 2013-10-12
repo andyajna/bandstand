@@ -1,4 +1,3 @@
 class Link < ActiveRecord::Base
-  belongs_to :band_profile
-  belongs_to :member
+	default_scope { order("created_at DESC") }
 end
