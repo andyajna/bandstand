@@ -5,7 +5,9 @@ class HomeController < ApplicationController
     @album = Album.latest
     @track = Track.first
     @band_profile = BandProfile.first
-    @links = @band_profile.links
+    if @band_profile
+    	@links = @band_profile.links
+    end
     @users = User.all
   end
 end
