@@ -2,16 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="../../assets/ico/favicon.png">
+    
 
-    <title>The Noob Jobs</title>
+    <title>The Love You Rights</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap.css" rel="stylesheet">
+   
 
     <!-- Custom styles for this template -->
     
@@ -29,28 +25,67 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="head">
-    	<h1>The Noob Jobs</h1>
+    	<h1>The Love You Rights</h1>
     </div>
 
     <div class="container">
       <!-- Example row of columns -->
+      <div class="front-page">
       <div class="row">
         <div class="col-lg-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+          <h2>Us</h2>
+          <% @members.each do |member| %>
+          <div class="front-box">
+          <p><strong><%= member.name %></strong></p>
+          <p><%= member.info %></p>
+          <%= image_tag member.image, class: "front-image" %>
+         </div>
+         <p>&nbsp;</p>
+          <% end %>
+      	  
         </div>
         <div class="col-lg-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+          <h2>Next Gigs</h2>
+          <% @gig.each do |gig| %>
+          <div class="front-box">
+          <p><strong><%= gig.title %></strong></p>
+          <p><%= gig.date %></p>
+          <p><%= gig.start_time %></p>
+          <p><%= gig.finish_time %></p>
+          <p><%= gig.street_address %></p>
+          <p><%= gig.suburb %></p>
+          <p><%= link_to 'Location Map', gig.location, html_options = { :target => '_blank' }  %></p>
+          <p><%= link_to 'Buy Tickets', gig.tickets_url, html_options = { :target => '_blank' } %></p>
+         </div>
+         <p>&nbsp;</p>
+          <% end %>
+          <h2>Our Links</h2>
+          <% @links.each do |link| %>
+          <div class="front-box">
+          <p><%= link_to link.title, link.url, html_options = { :target => '_blank' } %></p>
+         </div>
+          <% end %>
        </div>
         <div class="col-lg-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#">View details &raquo;</a></p>
+          <h2>Latest Album</h2>
+          <div class="front-box">
+          <p><strong><%= @album.title %></strong></p>
+          <p><%= @album.release_date %></p>
+          <p><%= @album.info %></p>
+          <p><%= link_to 'Sound Cloud page..', @album.buy_link, html_options = { :target => '_blank' } %></p>
+         </div>
+        <h2>Latest Pics</h2>
+        <% @photo.each do |photo| %>
+          <div class="front-box">
+          <p><%= photo.caption %></p>
+          <p><%= image_tag photo.image, class: "front-image" %></p>
+          
+         </div>
+         <p>&nbsp;</p>
+         <% end %>
         </div>
       </div>
+  </div>
     </div> <!-- /container -->
 
 

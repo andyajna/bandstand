@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @photo = Photo.first
+    @photo = Photo.limit(3)
     @gig = Gig.next
     @album = Album.latest
     @track = Track.first
@@ -9,5 +9,6 @@ class HomeController < ApplicationController
     	@links = @band_profile.links
     end
     @users = User.all
+    @members = Member.all
   end
 end

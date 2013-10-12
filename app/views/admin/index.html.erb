@@ -1,4 +1,4 @@
-<h1>Welcome to BandStand!</h1>
+
 
 <% if !@band_profile %>
 	<div class="alert alert-warning">
@@ -7,29 +7,32 @@
 		<%= link_to "Create profile", new_band_profile_path, class: 'btn btn-success' %>
 	</div>
 <% else %>
-	<h2><%= @band_profile.name %>'s Profile</h2>
-	<p><strong>Name:</strong> <%= @band_profile.name %></p>
+<div class="head">
+	<h1><%= @band_profile.name %>'s Profile</h1>
+</div>
+	<p><strong>Name:</strong> <%= @band_profile.name  %></p>
 	<p><strong>Info:</strong> <%= @band_profile.info %></p>
 	<p><%= link_to "Edit band profile", edit_band_profile_path(@band_profile), class: 'btn btn-warning' %></p>
 
 	<hr>
-	<h3>Band links</h3>
+	<div class="profile">
+	<h3><%= @band_profile.name %>'s Links</h3>
 	<% if @band_profile.links.count > 0 %>
-		<h3><%= @band_profile.name %>'s Links</h3>
+		
 		<% @band_profile.links.each do |link| %>
 			<p><%= link_to link.title, link.url, html_options = { :target => '_blank' } %></p>
 		<% end %>
 	<% end %>
 	<p><%= link_to "Add links", new_link_path, class: 'btn btn-warning' %></p>
-
+</div>
 	<hr>
-
+	<div class="profile">
 	<h3>Band members</h3>
 	<% if @members.count > 0 %>
 
 		<% @members.each do |member| %>
 			<div class="container">
-				<%= image_tag member.image, class: "pull-left" %>
+				<%= image_tag member.image, class: "admin-image" %>
 				<p><strong><%= member.name %></strong></p>
 				<p><%= member.info %></p>
 				<p><%= link_to "Edit member", edit_member_path(member), class: 'btn btn-warning' %></p>
@@ -43,9 +46,11 @@
 		<% end %>
 	<% end %>
 	<p><%= link_to "Add band members", new_member_path, class: 'btn btn-warning' %></p>
+</div>
 
 	<hr>
-	<h2>Gigs</h2>
+	<div class="profile">
+	<h3>Gigs</h3>
 	<% if @gigs.count > 0 %>
 
 
@@ -81,19 +86,20 @@
 		</table>
 	<% end %>
 	<p><%= link_to "Add a gig", new_gig_path, class: 'btn btn-warning' %></p>
+</div>
 
 	<hr>
-
-	<h2>Photos</h2>
+	<div class="profile">
+	<h3>Photos</h3>
 	<% if @photos %>
 		<%= link_to "Photo library", photos_path, class: 'btn btn-primary' %>
 	<% end %>
 
 	<%= link_to "Add a photo", new_photo_path, class: 'btn btn-warning' %>
-
+</div>
 	<hr>
-
-	<h2>Albums</h2>
+	<div class="profile">
+	<h3>Albums</h3>
 	<% if @albums.count > 0 %>
 		<table class="table table-hover">
 			<thead>
@@ -124,5 +130,6 @@
 		</table>
 	<% end %>
 	<p><%= link_to "Add an album", new_album_path, class: 'btn btn-warning' %></p>
+</div>
 
 <% end %>
