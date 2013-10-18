@@ -8,5 +8,6 @@ class HomeController < ApplicationController
     @links = Link.all
     @users = User.all
     @members = Member.all
+    
   end
 end
